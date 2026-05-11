@@ -1,0 +1,12 @@
+.git
+.github
+# Credenciais locais; em produção use o instalador ou variáveis do PaaS.
+/config.php
+.cursor
+**/.DS_Store
+node_modules
+npm-debug.log*
+.phpunit.result.cache
+phpunit.xml
+**/nbproject
+**/.idea
