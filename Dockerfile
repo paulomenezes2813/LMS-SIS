@@ -1,6 +1,6 @@
 # Deploy em PaaS (ex.: Railway): PHP 8.3 + Apache, mesmo stack do docker-compose local.
-# Builders Railway usam linux/amd64; pin evita mistura de arquitetura na pull da base.
-FROM --platform=linux/amd64 moodlehq/moodle-php-apache:8.3
+# Não usar FROM --platform=... constante: o builder do Railway acusa FromPlatformFlagConstDisallowed.
+FROM moodlehq/moodle-php-apache:8.3
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
