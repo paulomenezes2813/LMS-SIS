@@ -1,0 +1,320 @@
+// =============================================================================
+// Edukkare — Extra SCSS (carregado DEPOIS do Boost)
+//
+// Regras de componentes e camadas finas de polimento. Sobrescreve estilos do
+// Boost sem duplicar variáveis. Mantenha enxuto — preferir override de
+// variáveis em pre.scss sempre que possível.
+// =============================================================================
+
+// ---------- Tipografia: carrega Inter via Google Fonts ----------
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Fraunces:wght@400;600&display=swap');
+
+// ---------- Layout global ----------
+body {
+    font-feature-settings: "ss01", "cv11"; // Inter: número 1 com serifa + 'a' single-storey
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    letter-spacing: -0.015em;
+}
+
+// ---------- Navbar / cabeçalho ----------
+.navbar {
+    border-bottom: 1px solid $stone-200;
+    box-shadow: none;
+    backdrop-filter: saturate(180%) blur(8px);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+// ---------- Botões ----------
+.btn {
+    font-weight: 500;
+    transition: all 0.15s ease-out;
+    border-width: 1px;
+}
+
+.btn-primary {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+
+    &:hover, &:focus {
+        background-color: $brand-primary-hover;
+        border-color: $brand-primary-hover;
+    }
+
+    &:active, &.active {
+        background-color: $brand-primary-active !important;
+        border-color: $brand-primary-active !important;
+    }
+}
+
+.btn-outline-primary {
+    color: $brand-primary;
+    border-color: $stone-300;
+
+    &:hover {
+        background-color: $brand-primary;
+        border-color: $brand-primary;
+        color: #fff;
+    }
+}
+
+.btn-link {
+    text-decoration: none;
+    color: $brand-primary;
+
+    &:hover {
+        text-decoration: underline;
+        color: $brand-primary-hover;
+    }
+}
+
+// ---------- Cards ----------
+.card {
+    border: 1px solid $stone-200;
+    transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.dashboard-card-deck .card:hover,
+.coursebox.card:hover {
+    box-shadow: $box-shadow-sm;
+    border-color: $stone-300;
+}
+
+// ---------- Inputs ----------
+.form-control, .form-select {
+    border-color: $stone-300;
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+
+    &:focus {
+        border-color: $brand-primary;
+        box-shadow: 0 0 0 3px rgba($brand-primary, 0.15);
+    }
+}
+
+// ---------- Badges ----------
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+// ---------- Drawers (Moodle Boost) ----------
+.drawer {
+    border-color: $stone-200;
+    background-color: $stone-50;
+}
+
+.drawer-toggler {
+    color: $stone-600;
+
+    &:hover {
+        color: $brand-primary;
+    }
+}
+
+// ---------- Página de login ----------
+#page-login-index {
+    background-color: $stone-50;
+
+    .login-container {
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+    }
+
+    .login-form-container {
+        background-color: #fff;
+        border: 1px solid $stone-200;
+        border-radius: $border-radius-xl;
+        padding: 2.5rem;
+        box-shadow: $box-shadow-xs;
+    }
+
+    .login-logo {
+        max-height: 56px;
+        margin-bottom: 1rem;
+    }
+
+    .login-tagline {
+        color: $stone-600;
+        font-size: 0.875rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .login-form-username,
+    .login-form-password {
+        margin-bottom: 1rem;
+
+        label { font-weight: 500; color: $stone-700; }
+    }
+
+    .login-form-submit {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+    }
+}
+
+// ---------- Painel esquerdo de login (versão minimalista clara) ----------
+// Composição: fundo branco simples, logo do site centralizado e tagline curta
+// abaixo. Sobrescreve explicitamente o background indigo e o "card interno"
+// que o Boost aplica em .login-layout-left-content.
+.pagelayout-login .login-layout-left {
+    background-color: #FFFFFF !important;
+    background-image: none !important;
+    color: $stone-700;
+    padding: 4rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid $stone-100;
+}
+
+// Mata o card escuro interno do Boost (rgba(darken($primary,25%), 0.65)).
+.pagelayout-login .login-layout-left-content {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: $stone-700 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    max-width: 480px !important;
+    text-align: center;
+}
+
+.edukkare-login-panel--light {
+    width: 100%;
+    text-align: center;
+    color: $stone-700;
+}
+
+.edukkare-login-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.edukkare-login-logo {
+    max-width: 280px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    // Funde fundos brancos do PNG do logo com o fundo do painel (sem moldura).
+    mix-blend-mode: multiply;
+}
+
+// Fallback wordmark quando não há logo configurado.
+.edukkare-login-panel--light .edukkare-login-wordmark {
+    font-family: $font-family-sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: $brand-primary;
+    margin: 0;
+    line-height: 1;
+
+    .edukkare-dot {
+        color: $brand-accent;
+    }
+}
+
+.edukkare-login-panel--light .edukkare-login-tagline {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: $stone-700;
+    margin: 0;
+    letter-spacing: -0.005em;
+    line-height: 1.5;
+    max-width: 360px;
+}
+
+// Esconde pilares no novo layout caso o template antigo ainda esteja em cache.
+.login-layout-left .edukkare-login-pillars {
+    display: none;
+}
+
+// ---------- Course index e atividade ----------
+.courseindex-item {
+    border-radius: $border-radius;
+
+    &.courseindex-item-current {
+        background-color: $brand-primary-subtle;
+        color: $brand-primary;
+        font-weight: 500;
+    }
+}
+
+.activity-item {
+    border-radius: $border-radius-lg;
+    border-color: $stone-200;
+    background-color: #fff;
+    transition: background-color 0.15s ease-out;
+
+    &:hover {
+        background-color: $stone-50;
+    }
+}
+
+// ---------- Tabelas ----------
+.table {
+    --bs-table-border-color: #{$stone-200};
+    --bs-table-striped-bg: #{$stone-50};
+}
+
+.table thead th {
+    font-weight: 600;
+    color: $stone-700;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    border-bottom-width: 1px;
+}
+
+// ---------- Foco visível (acessibilidade WCAG AA) ----------
+:focus-visible {
+    outline: 2px solid $brand-primary;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+// ---------- Seleção de texto ----------
+::selection {
+    background-color: $brand-primary-subtle;
+    color: $brand-primary-active;
+}
+
+// ---------- Reduções de movimento (acessibilidade) ----------
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+// ---------- Modo escuro (preview — ativado por usuário ou sistema) ----------
+@media (prefers-color-scheme: dark) {
+    body.theme-dark-allowed {
+        background-color: $stone-950;
+        color: $stone-50;
+
+        .card, .navbar, .drawer, #page-login-index .login-form-container {
+            background-color: $stone-900;
+            border-color: $stone-800;
+            color: $stone-100;
+        }
+
+        .table {
+            --bs-table-border-color: #{$stone-800};
+            --bs-table-color: #{$stone-100};
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Edukkare">
+  <title>Edukkare</title>
+  <rect width="128" height="128" rx="24" fill="#3730A3"/>
+  <text x="64" y="92" text-anchor="middle"
+        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="800" font-size="92" letter-spacing="-0.04em" fill="#FFFFFF">e</text>
+  <circle cx="100" cy="84" r="4" fill="#F59E0B"/>
+</svg>

@@ -1,0 +1,29 @@
+{{!
+    Edukkare-LMS — painel esquerdo da tela de login (versão minimalista clara).
+
+    Layout: fundo branco com gradiente sutil, logo do site centralizado e tagline
+    abaixo. Sem pilares, sem informação extra. Se o admin configurar
+    auth_instructions, o conteúdo customizado prevalece.
+
+    @template theme_edukkare/core/login_panel
+}}
+<div class="login-layout-left-content edukkare-login-panel edukkare-login-panel--light">
+    {{^leftinstructions}}
+        <div class="edukkare-login-brand">
+            {{#logourl}}
+                <img class="edukkare-login-logo" src="{{logourl}}" alt="{{sitefullname}}">
+            {{/logourl}}
+            {{^logourl}}
+                <h1 class="edukkare-login-wordmark">edukkare<span class="edukkare-dot">.</span></h1>
+            {{/logourl}}
+            {{#logintagline}}
+                <p class="edukkare-login-tagline">{{logintagline}}</p>
+            {{/logintagline}}
+        </div>
+    {{/leftinstructions}}
+    {{#leftinstructions}}
+        <div class="mx-auto text-start">
+            {{{leftinstructions}}}
+        </div>
+    {{/leftinstructions}}
+</div>

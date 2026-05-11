@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/sisrj/db" VERSION="20260510" COMMENT="Local SISRJ — engine de sincronia SIS ↔ Moodle"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+
+    <!-- Log de webhooks recebidos do SIS. Permite auditoria e retry. -->
+    <TABLE NAME="local_sisrj_webhook_log" COMMENT="Webhooks recebidos do SIS">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="event" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="Tipo do evento, ex.: user.created, enrolment.created"/>
+        <FIELD NAME="payload" TYPE="text" NOTNULL="true" COMMENT="JSON original recebido"/>
+        <FIELD NAME="signature" TYPE="char" LENGTH="255" NOTNULL="false" COMMENT="HMAC do payload para verificação"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending" COMMENT="pending|processing|done|failed"/>
+        <FIELD NAME="attempts" TYPE="int" LENGTH="3" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="lasterror" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="receivedat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="processedat" TYPE="int" LENGTH="10" NOTNULL="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="status-receivedat" UNIQUE="false" FIELDS="status, receivedat"/>
+        <INDEX NAME="event" UNIQUE="false" FIELDS="event"/>
+      </INDEXES>
+    </TABLE>
+
+    <!-- Mapa de identidade SIS ↔ Moodle. Permite resolver entidades sem expor o id interno. -->
+    <TABLE NAME="local_sisrj_idmap" COMMENT="Mapeamento entre IDs do SIS e IDs internos do Moodle">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="entitytype" TYPE="char" LENGTH="50" NOTNULL="true" COMMENT="user|course|enrolment|certificate"/>
+        <FIELD NAME="sisid" TYPE="char" LENGTH="100" NOTNULL="true" COMMENT="Identificador no SIS"/>
+        <FIELD NAME="moodleid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="createdat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="updatedat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="entitytype-sisid" UNIQUE="true" FIELDS="entitytype, sisid"/>
+        <INDEX NAME="entitytype-moodleid" UNIQUE="false" FIELDS="entitytype, moodleid"/>
+      </INDEXES>
+    </TABLE>
+
+    <!-- Fila de eventos do Moodle a enviar para o SIS (webhooks OUT). -->
+    <TABLE NAME="local_sisrj_outbox" COMMENT="Fila de eventos Moodle → SIS">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="event" TYPE="char" LENGTH="100" NOTNULL="true"/>
+        <FIELD NAME="payload" TYPE="text" NOTNULL="true"/>
+        <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="pending"/>
+        <FIELD NAME="attempts" TYPE="int" LENGTH="3" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="lasterror" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="nextattemptat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="createdat" TYPE="int" LENGTH="10" NOTNULL="true"/>
+        <FIELD NAME="sentat" TYPE="int" LENGTH="10" NOTNULL="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="status-next" UNIQUE="false" FIELDS="status, nextattemptat"/>
+      </INDEXES>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>

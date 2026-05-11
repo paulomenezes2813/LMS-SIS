@@ -1,0 +1,166 @@
+{
+  "$schema": "Paleta Edukkare-LMS — minimalismo moderno (2026). Indigo profundo + neutros Stone (cinzas quentes) + amber como acento moderado. Inspiração: Stripe, Linear, Vercel.",
+  "version": "1.0.0",
+  "updated": "2026-05-10",
+
+  "brand": {
+    "primary": "#3730A3",
+    "primary_hover": "#4338CA",
+    "primary_active": "#312E81",
+    "primary_subtle": "#EEF2FF",
+    "primary_on": "#FFFFFF",
+
+    "secondary": "#0F172A",
+    "secondary_hover": "#1E293B",
+    "secondary_on": "#FFFFFF",
+
+    "accent": "#F59E0B",
+    "accent_hover": "#D97706",
+    "accent_subtle": "#FEF3C7",
+    "accent_on": "#1C1917"
+  },
+
+  "semantic": {
+    "success": "#10B981",
+    "success_subtle": "#D1FAE5",
+    "success_on": "#FFFFFF",
+
+    "warning": "#F59E0B",
+    "warning_subtle": "#FEF3C7",
+    "warning_on": "#1C1917",
+
+    "error": "#EF4444",
+    "error_subtle": "#FEE2E2",
+    "error_on": "#FFFFFF",
+
+    "info": "#3B82F6",
+    "info_subtle": "#DBEAFE",
+    "info_on": "#FFFFFF"
+  },
+
+  "surface_light": {
+    "background": "#FAFAF9",
+    "background_subtle": "#F5F5F4",
+    "card": "#FFFFFF",
+    "card_hover": "#FAFAF9",
+    "overlay": "rgba(28, 25, 23, 0.4)",
+
+    "border": "#E7E5E4",
+    "border_strong": "#D6D3D1",
+    "divider": "#F5F5F4",
+
+    "text_primary": "#1C1917",
+    "text_secondary": "#57534E",
+    "text_muted": "#A8A29E",
+    "text_disabled": "#D6D3D1",
+
+    "link": "#3730A3",
+    "link_hover": "#4338CA",
+    "link_visited": "#5B21B6",
+
+    "focus_ring": "#A5B4FC",
+    "selection_bg": "#E0E7FF",
+    "selection_text": "#1E1B4B"
+  },
+
+  "surface_dark": {
+    "background": "#0C0A09",
+    "background_subtle": "#1C1917",
+    "card": "#1C1917",
+    "card_hover": "#292524",
+    "overlay": "rgba(0, 0, 0, 0.6)",
+
+    "border": "#292524",
+    "border_strong": "#44403C",
+    "divider": "#1C1917",
+
+    "text_primary": "#FAFAF9",
+    "text_secondary": "#D6D3D1",
+    "text_muted": "#78716C",
+    "text_disabled": "#44403C",
+
+    "link": "#A5B4FC",
+    "link_hover": "#C7D2FE",
+    "link_visited": "#C4B5FD",
+
+    "focus_ring": "#6366F1",
+    "selection_bg": "#312E81",
+    "selection_text": "#E0E7FF"
+  },
+
+  "data_visualization": {
+    "$comment": "Paleta categórica para gráficos (recharts/Chart.js). Sequência otimizada para distinção visual e daltonismo.",
+    "categorical": [
+      "#3730A3",
+      "#10B981",
+      "#F59E0B",
+      "#3B82F6",
+      "#EF4444",
+      "#8B5CF6",
+      "#14B8A6",
+      "#EC4899"
+    ],
+    "sequential_indigo": [
+      "#EEF2FF",
+      "#C7D2FE",
+      "#A5B4FC",
+      "#818CF8",
+      "#6366F1",
+      "#4F46E5",
+      "#4338CA",
+      "#3730A3",
+      "#312E81",
+      "#1E1B4B"
+    ],
+    "diverging_red_green": [
+      "#B91C1C",
+      "#EF4444",
+      "#FCA5A5",
+      "#F5F5F4",
+      "#86EFAC",
+      "#10B981",
+      "#047857"
+    ]
+  },
+
+  "certificates": {
+    "$comment": "Paleta restrita para PDFs de certificado — alto contraste, impressão amigável.",
+    "border_color": "#3730A3",
+    "title_color": "#3730A3",
+    "subtitle_color": "#0F172A",
+    "body_color": "#1C1917",
+    "muted_color": "#57534E",
+    "accent_color": "#F59E0B",
+    "background_color": "#FFFFFF",
+    "watermark_color": "rgba(55, 48, 163, 0.04)"
+  },
+
+  "mobile_app": {
+    "$comment": "Tokens específicos do app mobile — barra de status, splash, tab bar.",
+    "status_bar_style_light": "dark-content",
+    "status_bar_style_dark": "light-content",
+    "status_bar_background_light": "#FAFAF9",
+    "status_bar_background_dark": "#0C0A09",
+    "splash_background": "#3730A3",
+    "splash_logo_color": "#FFFFFF",
+    "tab_bar_active_light": "#3730A3",
+    "tab_bar_inactive_light": "#A8A29E",
+    "tab_bar_active_dark": "#A5B4FC",
+    "tab_bar_inactive_dark": "#78716C"
+  },
+
+  "elevation": {
+    "$comment": "Sistema de sombras — apenas três níveis. Acima disso, usar borda.",
+    "shadow_xs": "0 1px 2px 0 rgb(0 0 0 / 0.04)",
+    "shadow_sm": "0 2px 4px -1px rgb(0 0 0 / 0.06)",
+    "shadow_md": "0 4px 12px -2px rgb(0 0 0 / 0.08)"
+  },
+
+  "radius": {
+    "sm": "6px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "full": "9999px"
+  }
+}

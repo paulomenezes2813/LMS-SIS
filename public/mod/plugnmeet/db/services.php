@@ -1,0 +1,77 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * PlugNmeet web services definition.
+ *
+ * @package     mod_plugnmeet
+ * @author      Jibon L. Costa <jibon@mynaparrot.com>
+ * @copyright   2026 MynaParrot
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+defined('MOODLE_INTERNAL') || die();
+
+$functions = [
+    'mod_plugnmeet_create_room' => [
+        'classname'   => 'mod_plugnmeet\external\create_room',
+        'methodname'  => 'execute',
+        'description' => 'Creates a new room.',
+        'type'        => 'write',
+        'ajax'        => true,
+        'capability'  => 'mod/plugnmeet:view',
+    ],
+    'mod_plugnmeet_end_room' => [
+        'classname'   => 'mod_plugnmeet\external\end_room',
+        'methodname'  => 'execute',
+        'description' => 'Ends a room.',
+        'type'        => 'write',
+        'ajax'        => true,
+        'capability'  => 'mod/plugnmeet:manage',
+    ],
+    'mod_plugnmeet_get_join_token' => [
+        'classname'   => 'mod_plugnmeet\external\get_join_token',
+        'methodname'  => 'execute',
+        'description' => 'Gets a join token for the current user.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'loginrequired' => false, // Allow guest users to call this service.
+    ],
+    'mod_plugnmeet_is_room_active' => [
+        'classname'   => 'mod_plugnmeet\external\is_room_active',
+        'methodname'  => 'execute',
+        'description' => 'Checks if a room is active.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capability'  => 'mod/plugnmeet:view',
+    ],
+    'mod_plugnmeet_get_active_room_info' => [
+        'classname'   => 'mod_plugnmeet\external\get_active_room_info',
+        'methodname'  => 'execute',
+        'description' => 'Gets active room info.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capability'  => 'mod/plugnmeet:viewlivesessioninfo',
+    ],
+    'mod_plugnmeet_get_active_rooms_report' => [
+        'classname'   => 'mod_plugnmeet\external\get_active_rooms_report',
+        'methodname'  => 'execute',
+        'description' => 'Gets active rooms report for administrators.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capability'  => 'mod/plugnmeet:viewactiveroomsreport',
+    ],
+];

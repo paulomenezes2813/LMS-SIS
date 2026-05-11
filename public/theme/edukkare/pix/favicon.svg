@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Edukkare">
+  <rect width="32" height="32" rx="6" fill="#3730A3"/>
+  <text x="16" y="23.5" text-anchor="middle"
+        font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="800" font-size="22" letter-spacing="-0.04em" fill="#FFFFFF">e</text>
+</svg>
