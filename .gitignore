@@ -61,3 +61,6 @@ jsconfig.json
 UPGRADING-CURRENT.md
 .phpunit.cache
 tsconfig.aliases.json
+
+# Dump local para migração (não versionar: contém dados sensíveis).
+/moodle-export-for-railway.sql
